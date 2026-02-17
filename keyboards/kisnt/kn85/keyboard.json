@@ -2,6 +2,7 @@
     "manufacturer": "Kisnt",
     "keyboard_name": "KN85",
     "features": {
+        "bootmagic": true,
         "rgb_matrix": true
     },
     "usb": {

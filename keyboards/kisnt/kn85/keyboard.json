@@ -1,14 +1,15 @@
 {
     "manufacturer": "Kisnt",
     "keyboard_name": "KN85",
+    "maintainer": "Josh Steffen",
     "features": {
-        "bootmagic": true,
+        "extrakey": true,
         "rgb_matrix": true
     },
     "usb": {
         "device_version": "1.0.0",
-        "pid": "0x1234",
-        "vid": "0x5678"
+        "vid": "0xFEED",
+        "pid": "0x8585"
     },
     "development_board": "sn32f240b_shared_matrix",
     "diode_direction": "COL2ROW",

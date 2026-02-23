@@ -16,18 +16,45 @@
 
 #include "quantum.h"
 
-#ifdef RGB_MATRIX_ENABLE
+#ifdef DIP_SWITCH_ENABLE
+bool dip_switch_update_kb(uint8_t index, bool active) {
+    if (!dip_switch_update_user(index, active)) {
+        return false;
+    }
+    switch (index) {
+        case 1:
+            // 2.4GHz mode
+            break;
+        case 2:
+            // Bluetooth mode
+            break;
+        default:
+            break;
+    }
+    return true;
+}
+#endif
 
+#ifdef RGB_MATRIX_ENABLE
 bool rgb_matrix_indicators_kb(void) {
     if (!rgb_matrix_indicators_user()) {
         return false;
     }
+
     if (host_keyboard_led_state().caps_lock) {
-        rgb_matrix_set_color(85, RGB_RED);
-        rgb_matrix_set_color(86, RGB_GREEN); // TODO: scroll lock
-        rgb_matrix_set_color(87, RGB_BLUE);  // TODO: battery
+        rgb_matrix_set_color(85, RGB_WHITE);
+    } else {
+        rgb_matrix_set_color(85, RGB_OFF);
     }
+
+    if (host_keyboard_led_state().scroll_lock) {
+        rgb_matrix_set_color(86, RGB_WHITE);
+    } else {
+        rgb_matrix_set_color(86, RGB_OFF);
+    }
+
+    rgb_matrix_set_color(87, RGB_OFF);
+
     return true;
 }
-
 #endif
